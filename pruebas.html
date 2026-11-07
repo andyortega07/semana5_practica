@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pruebas de funciones puras</title>
+</head>
+<body>
+  <h1>Pruebas de funciones puras</h1>
+  <p id="resultado">Ejecutando…</p>
+  <script type="module">
+    import { calcularTotales } from "./js/calculos.js";
+
+    const total = calcularTotales([{ id: 2, cantidad: 6 }], "cuenca").total;
+    const esperado = 166.75;
+    const aprobado = Math.abs(total - esperado) < 0.001;
+    document.querySelector("#resultado").textContent = aprobado
+      ? `✅ Aprobada: teclado × 6 con Cuenca = ${total.toFixed(2)}`
+      : `❌ Fallida: se obtuvo ${total.toFixed(2)} y se esperaba ${esperado.toFixed(2)}`;
+    document.title = aprobado ? "✅ Pruebas aprobadas" : "❌ Pruebas fallidas";
+  </script>
+</body>
+</html>
